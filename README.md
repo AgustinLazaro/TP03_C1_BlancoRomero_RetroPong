@@ -12,7 +12,7 @@
 - [ ] Use "Delta Time" for all moving objects in the scene.
 - [✅] Include a Main Menu scene.
 - [✅] Include a Pause menu.
-- [ ] Constrain player movement within the game boundaries.
+- [✅] Constrain player movement within the game boundaries.
 - [ ] Implement ball movement.
 - [✅] Create an Options screen that pauses the game. 
 - [ ] Dynamically configure the following via the Options screen: Player speed, Paddle height, and Player color.
