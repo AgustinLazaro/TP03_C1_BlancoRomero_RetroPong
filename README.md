@@ -8,9 +8,9 @@
 
 - [✅] Have 2 players (Left and Right). 
 - [✅] Control Player 1 using W/S keys, and Player 2 using the Arrow keys.
-- [ ] Integrate 2 sprites so each player has their corresponding image.
+- [✅] Integrate 2 sprites so each player has their corresponding image.
 - [ ] Use "Delta Time" for all moving objects in the scene.
-- [ ] Include a Main Menu scene.
+- [✅] Include a Main Menu scene.
 - [✅] Include a Pause menu.
 - [ ] Constrain player movement within the game boundaries.
 - [ ] Implement ball movement.
