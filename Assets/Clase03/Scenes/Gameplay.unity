@@ -1915,7 +1915,7 @@ GameObject:
   - component: {fileID: 519626511}
   m_Layer: 0
   m_Name: wall_top_retro_0
-  m_TagString: Untagged
+  m_TagString: Boundaries
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2324,6 +2324,7 @@ GameObject:
   - component: {fileID: 553512185}
   - component: {fileID: 553512187}
   - component: {fileID: 553512188}
+  - component: {fileID: 553512189}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -2566,6 +2567,24 @@ PolygonCollider2D:
       - {x: 0.065, y: -0.31625}
       - {x: 0.082499996, y: -0.3125}
   m_UseDelaunayMesh: 1
+--- !u!114 &553512189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553512183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d836836cb59ce448bbc43b979633766, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallMovement
+  rb: {fileID: 0}
+  currentDirection: {x: 0, y: 0}
+  forceMagnitude: 300
+  speedMultiplier: 1.02
+  startAngleLimit: 0.5
+  randomBounce: 0.2
 --- !u!1 &581947520
 GameObject:
   m_ObjectHideFlags: 0
@@ -4243,7 +4262,7 @@ GameObject:
   - component: {fileID: 1571437559}
   m_Layer: 0
   m_Name: wall_bottom_retro_0
-  m_TagString: Untagged
+  m_TagString: Boundaries
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4456,7 +4475,7 @@ GameObject:
   - component: {fileID: 1633823178}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4628,13 +4647,13 @@ GameObject:
   - component: {fileID: 1725450815}
   - component: {fileID: 1725450819}
   - component: {fileID: 1725450821}
+  - component: {fileID: 1725450822}
   - component: {fileID: 1725450818}
   - component: {fileID: 1725450817}
   - component: {fileID: 1725450816}
-  - component: {fileID: 1725450822}
   m_Layer: 0
   m_Name: Player2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4647,13 +4666,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1725450814}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.38268343, w: 0.92387956}
   m_LocalPosition: {x: 6.9, y: 0, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1524489721}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
 --- !u!114 &1725450816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4696,10 +4715,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Movement
   MoveUp: 273
-  MoveLeft: 276
   MoveDown: 274
-  MoveRight: 275
-  moveSpeed: 15
+  moveSpeed: 1500
 --- !u!212 &1725450819
 SpriteRenderer:
   serializedVersion: 2
@@ -4771,8 +4788,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
-  m_LinearDamping: 10
+  m_Mass: 1
+  m_LinearDamping: 5
   m_AngularDamping: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -5087,7 +5104,7 @@ GameObject:
   - component: {fileID: 1730700012}
   m_Layer: 0
   m_Name: Square (1)
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5598,7 +5615,7 @@ GameObject:
   - component: {fileID: 1888348001}
   m_Layer: 0
   m_Name: Player1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5611,13 +5628,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1888347998}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
   m_LocalPosition: {x: -6.9, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1524489721}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
 --- !u!212 &1888348000
 SpriteRenderer:
   serializedVersion: 2
@@ -5719,10 +5736,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Movement
   MoveUp: 119
-  MoveLeft: 97
   MoveDown: 115
-  MoveRight: 100
-  moveSpeed: 15
+  moveSpeed: 1500
 --- !u!50 &1888348005
 Rigidbody2D:
   serializedVersion: 5
@@ -5735,8 +5750,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
-  m_LinearDamping: 10
+  m_Mass: 1
+  m_LinearDamping: 5
   m_AngularDamping: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -6316,7 +6331,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1984795251}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1bab34b12075a743bca9840091f4ca2, type: 3}
   m_Name: 
@@ -6364,7 +6379,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2000913997}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7794ca522e1a98489ad8d42b98a0511, type: 3}
   m_Name: 

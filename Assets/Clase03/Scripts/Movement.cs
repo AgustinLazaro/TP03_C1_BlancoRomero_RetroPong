@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -5,30 +6,39 @@ public class Movement : MonoBehaviour
 {
     [Header("Config Movement")]
     [SerializeField] private KeyCode MoveUp = KeyCode.W;
-    [SerializeField] private KeyCode MoveLeft = KeyCode.A;
     [SerializeField] private KeyCode MoveDown = KeyCode.S;
-    [SerializeField] private KeyCode MoveRight = KeyCode.D;
 
     [Header("Config Speed")]
-    public float moveSpeed = 5f;
+    public float moveSpeed = 1500f;
+
+    private Rigidbody2D rb;
+    private Vector2 moveDirection;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     private void Update()
     {
+        float Xdirection = 0f;
+        float Ydirection = 0f;
+
         if (Input.GetKey(MoveUp))
         {
-            transform.position += new Vector3(0, moveSpeed * Time.deltaTime);
+            Ydirection = 1f;
         }
-        if (Input.GetKey(MoveRight))
-        {
-            transform.position += new Vector3(moveSpeed * Time.deltaTime, 0);
-        }
+
         if (Input.GetKey(MoveDown))
         {
-            transform.position += new Vector3(0, -moveSpeed * Time.deltaTime);
+            Ydirection = -1f;
         }
-        if (Input.GetKey(MoveLeft))
-        {
-            transform.position += new Vector3(-moveSpeed * Time.deltaTime, 0);
-        }
+
+        moveDirection = new Vector2(Xdirection, Ydirection).normalized;
+    }
+
+    private void FixedUpdate()
+    {
+        rb.AddForce(moveDirection * (moveSpeed * Time.deltaTime), ForceMode2D.Force);
     }
 }
