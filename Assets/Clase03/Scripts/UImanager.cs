@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class IUmanager : MonoBehaviour
 {
@@ -7,25 +9,30 @@ public class IUmanager : MonoBehaviour
     [SerializeField] private GameObject mainMenuPanel;
     [SerializeField] private GameObject optionsPanel;
     [SerializeField] private GameObject creditsPanel;
-    [SerializeField] private GameObject pauseMenuPanel;
 
+    [Header("Config Buttons")]
+   
+    [SerializeField] private Button playButton;
+    [SerializeField] private Button optionsButton;
+    [SerializeField] private Button creditsButton;
+    [SerializeField] private Button exitButton;
+    [SerializeField] private Button backOptionsButton;
+    [SerializeField] private Button backCreditsButton;
     private void Start()
     {
-        Time.timeScale = 0f;
-    }
+        playButton.onClick.AddListener(PlayButton);
+        optionsButton.onClick.AddListener(ShowOptions);
+        creditsButton.onClick.AddListener(ShowCredits);
+        exitButton.onClick.AddListener(ExitButton);
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            TogglePause();
-        }
+       
+        backOptionsButton.onClick.AddListener(HideOptions);
+        backCreditsButton.onClick.AddListener(HideCredits);
     }
 
     public void PlayButton()
     {
-        mainMenuPanel.SetActive(false);
-        Time.timeScale = 1f;
+        SceneManager.LoadScene("Gameplay"); 
     }
 
     public void ShowOptions()
@@ -43,39 +50,20 @@ public class IUmanager : MonoBehaviour
         creditsPanel.SetActive(true);
     }
 
-    public void ReturnToMainMenu()
-    {
-        pauseMenuPanel.SetActive(false); 
-        mainMenuPanel.SetActive(true); 
-        Time.timeScale = 0f;             
-    }
-
     public void HideCredits()
     {
         creditsPanel.SetActive(false);
     }
 
+
+
     public void ExitButton()
     {
         Application.Quit();
-
 
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
     }
 
-    public void TogglePause()
-    {
-        pauseMenuPanel.SetActive(!pauseMenuPanel.activeSelf);
-
-        if (pauseMenuPanel.activeSelf)
-        {
-            Time.timeScale = 0f;
-        }
-        else
-        {
-            Time.timeScale = 1f;
-        }
-    }
 }
